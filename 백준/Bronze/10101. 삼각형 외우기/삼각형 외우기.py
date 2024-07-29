@@ -2,7 +2,7 @@ a = int(input())
 b = int(input())
 c = int(input())
 if sum([a, b, c]) == 180:
-    if a == 60 and b == 60 and c == 60:
+    if a == b == c:
         print("Equilateral")
     elif a != b and a != c and b != c:
         print("Scalene")
