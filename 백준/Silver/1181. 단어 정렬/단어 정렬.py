@@ -4,10 +4,10 @@ n = int(input())
 arr = []
 for _ in range(n):
     arr.append(stdin.readline().strip())
-arr.sort(key= lambda x: (len(x), x))
 
-for i in range(len(arr) - 1):
-    if arr[i] == arr[i + 1]:
-        continue
-    print(arr[i])
-print(arr[-1])
+num_set = set(arr)
+num_arr = list(num_set)
+num_arr.sort(key= lambda x: (len(x), x))
+
+for i in num_arr:
+    print(i)
