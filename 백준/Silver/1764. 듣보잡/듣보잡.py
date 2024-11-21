@@ -1,12 +1,9 @@
-n ,m = map(int, input().split())
-s1 = set()
-s2 = set()
-for _ in range(n):
-    s1.add(input())
-for _ in range(m):
-    s2.add(input())
+import sys
 
-total_name = sorted(list(s1.intersection(s2)))
-print(len(total_name))
-for name in total_name:
+N, M = map(int, input().split())
+arr1 = [sys.stdin.readline().strip() for _ in range(N)]
+arr2 = [sys.stdin.readline().strip() for _ in range(M)]
+res = set(arr1) & set(arr2)
+print(len(res))
+for name in sorted(res):
     print(name)
