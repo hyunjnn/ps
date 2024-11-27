@@ -13,7 +13,7 @@ def bfs(height, start, end, up, down):
             return count
         
         for x in [current + up, current - down]:
-            if 1 <= x <= height and not x in visited:
+            if 1 <= x <= height and x not in visited:
                 dq.append((x, count + 1))
                 visited.add(x)
         
