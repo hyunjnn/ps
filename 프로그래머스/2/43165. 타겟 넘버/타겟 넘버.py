@@ -1,10 +1,6 @@
-def dfs(index, arr, current_sum, target):
-    if index == len(arr):
-        return 1 if current_sum == target else 0
-    
-    return dfs(index + 1, arr, current_sum + arr[index], target) + dfs(index + 1, arr, current_sum - arr[index], target)
-    
+from itertools import product
 
 def solution(numbers, target):
-    answer = dfs(0, numbers, 0, target)
-    return answer
+    l = [(x, -x) for x in numbers]
+    res = list(map(sum, product(*l)))
+    return res.count(target)
