@@ -1,9 +1,10 @@
+import sys
 from heapq import heappush, heappop
 
 N, M = map(int, input().split())
 edges = []
 for _ in range(M):
-    A, B, C = map(int, input().split())
+    A, B, C = map(int, sys.stdin.readline().strip().split())
     heappush(edges, (C, A, B))
 
 def find(parent, x):
