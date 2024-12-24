@@ -1,29 +1,19 @@
 from collections import deque
 
-def bfs(graph, start, visited):
-    dq = deque([start])
+def dfs(graph, start, visited):
     visited[start] = True
     
-    while dq:
-        current = dq.popleft()
-        for n in graph[current]:
-            if not visited[n]:
-                dq.append(n)
-                visited[n] = True
+    for n, connected in enumerate(graph[start]):
+        if connected and not visited[n]:
+            dfs(graph, n, visited)
                 
                 
 def solution(n, computers):
-    graph = [[] for _ in range(n)]
     visited = [False] * n
-    for i in range(n):
-        for j in range(n):
-            if computers[i][j] == 1:
-                graph[i].append(j)
-                graph[j].append(i)
     
     res = 0
     for k in range(n):
         if not visited[k]:
-            bfs(graph, k, visited)
+            dfs(computers, k, visited)
             res += 1
     return res
