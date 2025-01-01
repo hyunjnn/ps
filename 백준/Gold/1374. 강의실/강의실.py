@@ -6,7 +6,7 @@ N = int(input())
 
 lectures = []
 for _ in range(N):
-    lec_num, *data = map(int, input().split())
+    _, *data = map(int, input().split())
     lectures.append((data[0], data[1]))
     
 lectures.sort()
