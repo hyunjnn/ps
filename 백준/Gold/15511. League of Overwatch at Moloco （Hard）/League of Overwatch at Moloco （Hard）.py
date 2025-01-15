@@ -1,22 +1,21 @@
-from collections import deque
+from collections import deque, defaultdict
 import sys
 input = sys.stdin.readline
 
 def is_bipartite(graph, n):
     tags = [0] * (n + 1)
-    # 비연결 그래프를 고려한 모든 노드 탐색
     for start in range(1, n + 1):
-        if tags[start] != 0: continue
-        q = deque([start])
-        tags[start] = 1
-        while q:
-            curr = q.popleft()
-            for adj in graph[curr]:
-                if tags[adj] == 0:
-                    tags[adj] = -tags[curr]
-                    q.append(adj)
-                elif tags[adj] == tags[curr]:
-                    return False
+        if tags[start] == 0: 
+            q = deque([start])
+            tags[start] = 1
+            while q:
+                curr = q.popleft()
+                for adj in graph[curr]:
+                    if tags[adj] == 0:
+                        tags[adj] = -tags[curr]
+                        q.append(adj)
+                    elif tags[adj] == tags[curr]:
+                        return False
     return True
     
 
