@@ -8,16 +8,17 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 class Edge implements Comparable<Edge> {
-    int node, cost;
+    int node;
+    long cost;
     
-    public Edge(int node, int cost) {
+    public Edge(int node, long cost) {
         this.node = node;
         this.cost = cost;
     }
     
     @Override
     public int compareTo(Edge o) {
-        return Integer.compare(this.cost, o.cost);
+        return Long.compare(this.cost, o.cost);
     }
 }
 
@@ -31,7 +32,7 @@ public class Main {
         int v = Integer.parseInt(st.nextToken());
         int e = Integer.parseInt(st.nextToken());
         
-        int[] visible = new int[v];
+        final int[] visible = new int[v];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < v; i++) {
             visible[i] = Integer.parseInt(st.nextToken());
@@ -46,7 +47,7 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
+            long c = Integer.parseInt(st.nextToken());
             graph.get(a).add(new Edge(b, c));
             graph.get(b).add(new Edge(a, c));
         }
@@ -68,11 +69,14 @@ public class Main {
             if (cur.cost > time[cur.node]) continue;
             
             for (Edge neighbor: graph.get(cur.node)) {
-                if (neighbor.node != n - 1 && visible[neighbor.node] == 1) continue;
+                if (neighbor.node != n - 1 && visible[neighbor.node] == 1) {
+                    continue;
+                }
+                    
                 long newCost = time[cur.node] + neighbor.cost;
                 if (newCost < time[neighbor.node]) {
                     time[neighbor.node] = newCost;
-                    pQ.add(new Edge(neighbor.node, (int) newCost));
+                    pQ.add(new Edge(neighbor.node, newCost));
                 }
             }
         }
