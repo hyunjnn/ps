@@ -21,9 +21,8 @@ costs = [list(map(int, input().split())) for _ in range(n)]
 
 edges = []
 for i in range(n):
-    for j in range(n):
-        if i != j:
-            edges.append((costs[i][j], i, j))
+    for j in range(i + 1, n):
+        edges.append((costs[i][j], i, j))
     
 mst_cost = 0
 parent = [i for i in range(n)]
