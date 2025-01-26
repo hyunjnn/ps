@@ -1,29 +1,15 @@
 import sys
+from itertools import combinations
 input = sys.stdin.readline
 
-L, C = map(int, input().split())
-chars = sorted(input().split())
-
 def is_valid(password):
-    vowel = consonant = 0
-    for c in password:
-        if c in "aeiou":
-            vowel += 1 
-        else:
-            consonant += 1
+    vowel = sum(1 if p in "aeiou" else 0 for p in password)
+    consonant = len(password) - vowel
     return vowel >= 1 and consonant >= 2
-            
 
-def backtrack(start, count, password):
-    if count == L:
-        if is_valid(password):
-            print("".join(password))
-            return
-    for i in range(start, C):
-        password.append(chars[i])
-        backtrack(i + 1, count + 1, password)
-        password.pop()
 
-        
-password = []        
-backtrack(0, 0, password)
+L, C = map(int, input().split())
+
+for password in combinations(sorted(input().split()), L):
+    if is_valid(password):
+        print("".join(password))
