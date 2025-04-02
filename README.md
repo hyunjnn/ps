@@ -23,9 +23,9 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 
 ---
 
-📌 🔥 **DP 문제 풀어보기** 🚀 
+## 대표적인 DP 문제 풀어보기  
 - 배낭 문제: 무게 제한이 있는 상황에서 최적의 가치를 찾는 문제  
 - 동전 문제: 특정 금액을 만들기 위한 최소 동전 개수 찾기  
 - LIS 문제: 가장 긴 증가하는 부분 수열 찾기  
 - 플로이드-워셜 알고리즘: 모든 정점 간 최단 경로 계산  
----
+
